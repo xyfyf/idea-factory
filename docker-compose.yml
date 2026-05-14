@@ -1,0 +1,10 @@
+# 在「已构建好镜像」的机器上启动；或在本机 docker compose build 后 save 到轻量云
+services:
+  web:
+    build: .
+    image: idea-factory:local
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    restart: unless-stopped
