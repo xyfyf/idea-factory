@@ -73,7 +73,8 @@ npm ci
 npm run build
 
 pm2 delete idea-factory 2>/dev/null || true
-pm2 start npm --name idea-factory -- run start -- -H 0.0.0.0 -p 3000
+# 必须用 ecosystem 固定 cwd，否则 PM2 调 npm 时可能不在项目目录，出现 next: not found
+pm2 start ecosystem.config.cjs
 pm2 save
 echo ">>> 如需开机自启：执行 pm2 startup ，再复制终端里提示的以 sudo 开头的那一行执行一次。"
 
