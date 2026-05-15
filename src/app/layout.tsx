@@ -3,6 +3,7 @@
  * 面向非技术用户的产品名以中文「想法工场」为主展示。
  */
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { LocaleProvider } from "@/components/providers/locale-provider";
 import "./globals.css";
@@ -36,6 +37,8 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <LocaleProvider>{children}</LocaleProvider>
+        {/* Vercel 控制台：访客数、页面浏览量等（部署到 Vercel 后自动生效） */}
+        <Analytics />
       </body>
     </html>
   );
